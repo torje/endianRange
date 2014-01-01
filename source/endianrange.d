@@ -169,30 +169,3 @@ class EndianRange{
   }
 
 }
-
-unittest{
-  writeln("unittest");
-  auto a =  new EndianRange ( std.file.read("/home/torje/source/dpng/public/wFceaVH.png"));
-  /+auto eightynine = a.front;
-  a.popFront;
-  writef("%x ", eightynine);
-  char[3] png;
-  pragma(msg, typeof(png));
-  png = a.frontN!(char)(3);
-  a.popFrontN!(char)(3);
-  write( png, " ");
-  auto crlf = a.frontN!ubyte(2);
-  a.popFrontN!(ubyte)(2);
-  writef( "%(%02x %) ", crlf);
-  auto dosend = a.front;
-  a.popFront;
-  writef("%02x ", dosend);
-+/
-  auto pngHeader = a.front!( ubyte, char[3], ubyte[2], ubyte, ubyte);
-  a.popFront!( ubyte, char[3], ubyte[2], ubyte, ubyte);
-  auto chunk1 = a.front!( int , char[4] );
-  writeln( a.data[8..16]);
-  writeln(pngHeader);
-  writeln(chunk1);
-  writeln();
-}
